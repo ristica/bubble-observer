@@ -2,98 +2,98 @@
 
 namespace Test
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             // root
             var root = new ConcreteObserver(null, "ROOT");
 
             // 1st level
-            var subjectFirstLevela = new Subject();
-            var firstLevela = new ConcreteObserver(root, "A");
-            var subjectFirstLevelb = new Subject();
-            var firstLevelb = new ConcreteObserver(root, "B");
-            var subjectFirstLevelc = new Subject();
-            var firstLevelc = new ConcreteObserver(root, "C");
+            var subjectFirstLevelA = new Subject();
+            var firstLevelA = new ConcreteObserver(root, "A");
+            var subjectFirstLevelB = new Subject();
+            var firstLevelB = new ConcreteObserver(root, "B");
+            var subjectFirstLevelC = new Subject();
+            var firstLevelC = new ConcreteObserver(root, "C");
 
             // 2nd level
-            var subjectSecondLevela1 = new Subject();
-            var secondLevela1 = new ConcreteObserver(firstLevela, "A1");
-            var subjectSecondLevela2 = new Subject();
-            var secondLevela2 = new ConcreteObserver(firstLevela, "A2");
+            var subjectSecondLevelA1 = new Subject();
+            var secondLevelA1 = new ConcreteObserver(firstLevelA, "A1");
+            var subjectSecondLevelA2 = new Subject();
+            var secondLevelA2 = new ConcreteObserver(firstLevelA, "A2");
 
-            var subjectSecondLevelb1 = new Subject();
-            var secondLevelb1 = new ConcreteObserver(firstLevelb, "B1");
-            var subjectSecondLevelb2 = new Subject();
-            var secondLevelb2 = new ConcreteObserver(firstLevelb, "B2");
+            var subjectSecondLevelB1 = new Subject();
+            var secondLevelB1 = new ConcreteObserver(firstLevelB, "B1");
+            var subjectSecondLevelB2 = new Subject();
+            var secondLevelB2 = new ConcreteObserver(firstLevelB, "B2");
 
-            var subjectSecondLevelc1 = new Subject();
-            var secondLevelc1 = new ConcreteObserver(firstLevelc, "C1");
-            var subjectSecondLevelc2 = new Subject();
-            var secondLevelc2 = new ConcreteObserver(firstLevelc, "C2");
+            var subjectSecondLevelC1 = new Subject();
+            var secondLevelC1 = new ConcreteObserver(firstLevelC, "C1");
+            var subjectSecondLevelC2 = new Subject();
+            var secondLevelC2 = new ConcreteObserver(firstLevelC, "C2");
 
             // register upline observer
-            subjectSecondLevela1.RegisterObserver(firstLevela);
-            subjectSecondLevela2.RegisterObserver(firstLevela);
-            subjectSecondLevelb1.RegisterObserver(firstLevelb);
-            subjectSecondLevelb2.RegisterObserver(firstLevelb);
-            subjectSecondLevelc1.RegisterObserver(firstLevelc);
-            subjectSecondLevelc2.RegisterObserver(firstLevelc);
+            subjectSecondLevelA1.RegisterObserver(firstLevelA);
+            subjectSecondLevelA2.RegisterObserver(firstLevelA);
+            subjectSecondLevelB1.RegisterObserver(firstLevelB);
+            subjectSecondLevelB2.RegisterObserver(firstLevelB);
+            subjectSecondLevelC1.RegisterObserver(firstLevelC);
+            subjectSecondLevelC2.RegisterObserver(firstLevelC);
 
-            subjectFirstLevela.RegisterObserver(root);
-            subjectFirstLevelb.RegisterObserver(root);
-            subjectFirstLevelc.RegisterObserver(root);
+            subjectFirstLevelA.RegisterObserver(root);
+            subjectFirstLevelB.RegisterObserver(root);
+            subjectFirstLevelC.RegisterObserver(root);
 
             // set some points 
-            Console.WriteLine("--------- ADDING SOME FIRSTLEVEL' POINTS ON START ------------");
-            firstLevela.Points = 1000;
+            Console.WriteLine("--------- ADDING SOME FIRST LEVEL'S POINTS ON START ------------");
+            firstLevelA.Points = 1000;
             Console.WriteLine("A - 1000 points");
-            firstLevelb.Points = 2000;
+            firstLevelB.Points = 2000;
             Console.WriteLine("B - 2000 points");
-            firstLevelc.Points = 3000;
+            firstLevelC.Points = 3000;
             Console.WriteLine("C - 3000 points");
             Console.WriteLine("---------------------");
 
-            secondLevela1.Points = 100;
-            secondLevela2.Points = 100;
-            secondLevelb1.Points = 200;
-            secondLevelb2.Points = 200;
-            secondLevelc1.Points = 300;
-            secondLevelc2.Points = 300;
+            secondLevelA1.Points = 100;
+            secondLevelA2.Points = 100;
+            secondLevelB1.Points = 200;
+            secondLevelB2.Points = 200;
+            secondLevelC1.Points = 300;
+            secondLevelC2.Points = 300;
 
             // notify upline that points have changes
-            subjectFirstLevela.NotifyObserver(firstLevela.Points);
-            subjectFirstLevelb.NotifyObserver(firstLevelb.Points);
-            subjectFirstLevelc.NotifyObserver(firstLevelc.Points);
+            subjectFirstLevelA.NotifyObserver(firstLevelA.Points);
+            subjectFirstLevelB.NotifyObserver(firstLevelB.Points);
+            subjectFirstLevelC.NotifyObserver(firstLevelC.Points);
 
-            subjectSecondLevela1.NotifyObserver(secondLevela1.Points);
-            subjectSecondLevela2.NotifyObserver(secondLevela2.Points);
-            subjectSecondLevelb1.NotifyObserver(secondLevelb1.Points);
-            subjectSecondLevelb2.NotifyObserver(secondLevelb2.Points);
-            subjectSecondLevelc1.NotifyObserver(secondLevelc1.Points);
-            subjectSecondLevelc2.NotifyObserver(secondLevelc2.Points);
+            subjectSecondLevelA1.NotifyObserver(secondLevelA1.Points);
+            subjectSecondLevelA2.NotifyObserver(secondLevelA2.Points);
+            subjectSecondLevelB1.NotifyObserver(secondLevelB1.Points);
+            subjectSecondLevelB2.NotifyObserver(secondLevelB2.Points);
+            subjectSecondLevelC1.NotifyObserver(secondLevelC1.Points);
+            subjectSecondLevelC2.NotifyObserver(secondLevelC2.Points);
 
             Console.WriteLine("");
-            Console.WriteLine("                           " + root.Name + ": " + root.Points + " points");
+            Console.WriteLine("\t\t\t" + root.Name + ": " + root.Points + " points");
             Console.WriteLine("");
 
             // 1st level
-            Console.Write("\t" + firstLevela.Name + ":" + firstLevela.Points);
-            Console.Write("\t\t\t" + firstLevelb.Name + ":" + firstLevelb.Points);
-            Console.Write("\t\t\t" + firstLevelc.Name + ":" + firstLevelc.Points);
+            Console.Write("\t" + firstLevelA.Name + ":" + firstLevelA.Points);
+            Console.Write("\t\t\t" + firstLevelB.Name + ":" + firstLevelB.Points);
+            Console.Write("\t\t\t" + firstLevelC.Name + ":" + firstLevelC.Points);
             Console.WriteLine("");
-            Console.WriteLine("");
+            Console.WriteLine("----------------------------------------------------------------------");
 
             // 2nd level
-            Console.Write("   " + secondLevela1.Name + ":" + secondLevela1.Points);
-            Console.Write("    " + secondLevela2.Name + ":" + secondLevela2.Points);
+            Console.Write(secondLevelA1.Name + ":" + secondLevelA1.Points);
+            Console.Write("\t\t" + secondLevelA2.Name + ":" + secondLevelA2.Points + " | ");
 
-            Console.Write("        " + secondLevelb1.Name + ":" + secondLevelb1.Points);
-            Console.Write("    " + secondLevelb2.Name + ":" + secondLevelb2.Points);
+            Console.Write(secondLevelB1.Name + ":" + secondLevelB1.Points);
+            Console.Write("\t\t" + secondLevelB2.Name + ":" + secondLevelB2.Points + " | ");
 
-            Console.Write("        " + secondLevelc1.Name + ":" + secondLevelc1.Points);
-            Console.Write("    " + secondLevelc2.Name + ":" + secondLevelc2.Points);
+            Console.Write(secondLevelC1.Name + ":" + secondLevelC1.Points);
+            Console.Write("\t\t" + secondLevelC2.Name + ":" + secondLevelC2.Points);
 
             Console.ReadKey();
         }

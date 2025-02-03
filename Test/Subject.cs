@@ -6,17 +6,17 @@
 
         public void RegisterObserver(IObserver observer)
         {
-            this._observer = observer;
+            _observer = observer;
         }
 
         public void UnregisterObserver(IObserver observer)
         {
-            this._observer = null;
+            _observer = null;
         }
 
         public void NotifyObserver(int points)
         {
-            this._observer.Update(points);
+            _observer.Update(points);
         }
     }
 }

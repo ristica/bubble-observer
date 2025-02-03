@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Test
+﻿namespace Test
 {
     public interface IObserver
     {
